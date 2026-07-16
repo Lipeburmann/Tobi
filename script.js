@@ -1,4 +1,3 @@
-// 1. Pegamos todos os elementos do HTML pelo ID:
 const botao = document.getElementById('btnCumprimentar');
 const botaoComida = document.getElementById('btnComida');
 const botaoBolinha = document.getElementById('btnBolinha');
@@ -7,11 +6,13 @@ const musica = document.getElementById('musicaFundo');
 const titulo = document.getElementById('titulo');
 const gifNormal = 'assets/tobi_inicial.gif';
 const gifCumprimento = 'assets/mao_loop_count.gif';
+
 musica.volume = 0.1;
 
 
-//Ação do primeiro clique (Cumprimentar)
+//Botão de Cumprimentar
 botao.addEventListener('click', function() {
+        musica.loop = true; 
         musica.play();
         imagemGif.src = gifCumprimento;
         titulo.textContent = 'AU! AU!';
@@ -21,20 +22,26 @@ botao.addEventListener('click', function() {
         botaoBolinha.style.display = 'inline-block';        
     });
 
-//interaçao
-function interagirComTobi(novoGif, novaMusica) {
+
+//comida e bolinha
+
+botaoComida.addEventListener('click', function() {
     titulo.style.display = 'none'; 
     imagemGif.style.maxWidth = '300px';
     imagemGif.style.height = '300px';
-    imagemGif.src = novoGif;
-    musica.src = novaMusica;
-    musica.play();
-}
-
-botaoComida.addEventListener('click', function() {
-    interagirComTobi('assets/tobi_comendo.gif', 'assets/som_comendo.mp3');
+    imagemGif.src = 'assets/tobi_comendo.gif';
+    musica.src = 'assets/som_comendo.mp3';
+    musica.loop = false; 
+    musica.volume = 0.5;
+    setTimeout(function() {musica.play();}, 2000);
 });
     
+
 botaoBolinha.addEventListener('click', function() {
-    interagirComTobi('assets/tobi_bolinha.gif', 'assets/som_bolinha.mp3');
+    titulo.style.display = 'none'; 
+    imagemGif.style.maxWidth = '300px';
+    imagemGif.style.height = '300px';
+    imagemGif.src = 'assets/tobi_bolinha.gif';
+    musica.src = 'assets/som_bolinha.mp3';
+    musica.play();
 });
