@@ -1,6 +1,5 @@
 const botao = document.getElementById('btnCumprimentar');
 const imagemGif = document.getElementById('tobiGif');
-const mensagem = document.getElementById('mensagem');
 const musica = document.getElementById('musicaFundo');
 const titulo = document.getElementById('titulo');
 const gifNormal = 'assets/tobi_inicial.gif';
