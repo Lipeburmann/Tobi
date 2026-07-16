@@ -25,13 +25,11 @@ function tocarEfeito(src) {
 
 // Botão de Cumprimentar
 botao.addEventListener('click', function() {
-    // cancela o delay do som de comer, caso esteja pendente
     if (timeoutComida) {
         clearTimeout(timeoutComida);
         timeoutComida = null;
     }
 
-    // garante que a música de fundo está tocando
     if (musicaFundo.paused) {
         musicaFundo.play();
     }
@@ -51,15 +49,14 @@ botao.addEventListener('click', function() {
 
 // Botão Dar Comida
 botaoComida.addEventListener('click', function() {
+    if (timeoutComida) {
+        clearTimeout(timeoutComida);
+    }
     titulo.style.display = 'none';
     imagemGif.style.maxWidth = '300px';
     imagemGif.style.height = '300px';
     imagemGif.src = 'assets/tobi_comendo.gif';
 
-    // cancela um delay anterior, caso exista
-    if (timeoutComida) {
-        clearTimeout(timeoutComida);
-    }
 
     timeoutComida = setTimeout(function() {
         tocarEfeito('assets/som_comendo.mp3');
