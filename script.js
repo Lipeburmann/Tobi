@@ -22,6 +22,7 @@ function tocarEfeito(src) {
 
 // Botão de Cumprimentar
 botao.addEventListener('click', function() {
+    somEfeito.volume = 0.9;
     if (timeoutComida) {
         clearTimeout(timeoutComida);
         timeoutComida = null;
@@ -30,8 +31,7 @@ botao.addEventListener('click', function() {
     if (musicaFundo.paused) {
         musicaFundo.play();
     }
-
-    tocarEfeito('assets/som_cumprimentar.mp3');
+    setTimeout(function() {tocarEfeito('assets/som_cumprimentar.ogg');}, 1500);
 
     imagemGif.src = gifCumprimento;
     titulo.textContent = 'AU! AU!';
@@ -73,5 +73,5 @@ botaoBolinha.addEventListener('click', function() {
     imagemGif.style.height = '300px';
     imagemGif.src = 'assets/tobi_bolinha.gif';
 
-    tocarEfeito('assets/som_bolinha.mp3');
+    setTimeout(function() {tocarEfeito('assets/som_bolinha.mp3');}, 1500);
 });
