@@ -25,6 +25,12 @@ function tocarEfeito(src) {
 
 // Botão de Cumprimentar
 botao.addEventListener('click', function() {
+    // cancela o delay do som de comer, caso esteja pendente
+    if (timeoutComida) {
+        clearTimeout(timeoutComida);
+        timeoutComida = null;
+    }
+
     // garante que a música de fundo está tocando
     if (musicaFundo.paused) {
         musicaFundo.play();
@@ -63,6 +69,11 @@ botaoComida.addEventListener('click', function() {
 
 // Botão Jogar Bolinha
 botaoBolinha.addEventListener('click', function() {
+    if (timeoutComida) {
+        clearTimeout(timeoutComida);
+        timeoutComida = null;
+    }
+
     titulo.style.display = 'none';
     imagemGif.style.maxWidth = '300px';
     imagemGif.style.height = '300px';
