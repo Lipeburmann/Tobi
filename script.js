@@ -12,6 +12,6 @@ botao.addEventListener('click', function() {
         musica.play();
         imagemGif.src = gifCumprimento;
         titulo.textContent = 'AU! AU!'
-        imagemGif.style.maxWidth = '320px';
-        imagemGif.style.height = '320px';        
+        imagemGif.style.maxWidth = '300px';
+        imagemGif.style.height = '300px';        
 });
