@@ -12,7 +12,10 @@ somEfeito.volume = 0.6;
 let timeoutComida = null;
 
 window.addEventListener('load', function() {
-    setTimeout(function() {tocarEfeito('assets/latido.mp3');}, 1000);
+    setTimeout(function() {
+        somEfeito.loop = true;
+        tocarEfeito('assets/latido.mp3');
+    }, 1000);
 });
 
 function tocarEfeito(src) {
@@ -29,6 +32,11 @@ botao.addEventListener('click', function() {
         clearTimeout(timeoutComida);
         timeoutComida = null;
     }
+
+    // para o latido em loop
+    somEfeito.loop = false;
+    somEfeito.pause();
+    somEfeito.currentTime = 0;
 
     if (musicaFundo.paused) {
         musicaFundo.play();
@@ -51,7 +59,8 @@ botaoAcariciar.addEventListener('click', function() {
         clearTimeout(timeoutComida);
         timeoutComida = null;
     }
-     setTimeout(function() { tocarEfeito('assets/som_cumprimentar.ogg'); }, 1500);
+
+    setTimeout(function() { tocarEfeito('assets/som_cumprimentar.ogg'); }, 1500);
     titulo.style.display = 'none';
     imagemGif.style.maxWidth = '300px';
     imagemGif.style.height = '300px';
@@ -59,7 +68,6 @@ botaoAcariciar.addEventListener('click', function() {
 
     setTimeout(function() { tocarEfeito('assets/som_acariciar.mp3'); }, 1000);
 
-    // agora libera comida e bolinha
     botaoComida.style.display = 'inline-block';
     botaoBolinha.style.display = 'inline-block';
 });
