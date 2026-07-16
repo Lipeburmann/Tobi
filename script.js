@@ -1,4 +1,5 @@
 const botao = document.getElementById('btnCumprimentar');
+const botaoAcariciar = document.getElementById('btnAcariciar');
 const botaoComida = document.getElementById('btnComida');
 const botaoBolinha = document.getElementById('btnBolinha');
 const imagemGif = document.getElementById('tobiGif');
@@ -12,7 +13,6 @@ somEfeito.volume = 0.6;
 
 let timeoutComida = null;
 
-// Toca um efeito sonoro do zero, sem interferir na música de fundo
 function tocarEfeito(src) {
     somEfeito.pause();
     somEfeito.src = src;
@@ -31,18 +31,36 @@ botao.addEventListener('click', function() {
     if (musicaFundo.paused) {
         musicaFundo.play();
     }
-    setTimeout(function() {tocarEfeito('assets/som_cumprimentar.ogg');}, 1500);
-
     imagemGif.src = gifCumprimento;
     titulo.textContent = 'AU! AU!';
     titulo.style.display = '';
     imagemGif.style.maxWidth = '300px';
     imagemGif.style.height = '300px';
+
+    // esconde o Cumprimentar e mostra o Acariciar no lugar
+    botao.style.display = 'none';
+    botaoAcariciar.style.display = 'inline-block';
+});
+
+// Botão de Acariciar
+botaoAcariciar.addEventListener('click', function() {
+    somEfeito.volume = 0.9;
+    if (timeoutComida) {
+        clearTimeout(timeoutComida);
+        timeoutComida = null;
+    }
+     setTimeout(function() { tocarEfeito('assets/som_cumprimentar.ogg'); }, 1500);
+    titulo.style.display = 'none';
+    imagemGif.style.maxWidth = '300px';
+    imagemGif.style.height = '300px';
+    imagemGif.src = 'assets/mao_loop_count.gif';
+
+    setTimeout(function() { tocarEfeito('assets/som_acariciar.mp3'); }, 1000);
+
+    // agora libera comida e bolinha
     botaoComida.style.display = 'inline-block';
     botaoBolinha.style.display = 'inline-block';
 });
-
-
 
 // Botão Dar Comida
 botaoComida.addEventListener('click', function() {
@@ -53,7 +71,6 @@ botaoComida.addEventListener('click', function() {
     imagemGif.style.maxWidth = '300px';
     imagemGif.style.height = '300px';
     imagemGif.src = 'assets/tobi_comendo.gif';
-
 
     timeoutComida = setTimeout(function() {
         tocarEfeito('assets/som_comendo.mp3');
@@ -73,5 +90,5 @@ botaoBolinha.addEventListener('click', function() {
     imagemGif.style.height = '300px';
     imagemGif.src = 'assets/tobi_bolinha.gif';
 
-    setTimeout(function() {tocarEfeito('assets/som_bolinha.mp3');}, 1500);
+    setTimeout(function() { tocarEfeito('assets/som_bolinha.mp3'); }, 1500);
 });
