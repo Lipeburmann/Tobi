@@ -54,6 +54,7 @@ botao.addEventListener('click', function() {
     // esconde o Cumprimentar e mostra o Acariciar no lugar
     botao.style.display = 'none';
     botaoAcariciar.style.display = 'inline-block';
+    tocarEfeito('assets/gemido.mp3'); // Toca o barulhinho dele pedindo carinho
 });
 
 // Botão de Acariciar
