@@ -11,12 +11,16 @@ musicaFundo.volume = 0.08;
 somEfeito.volume = 0.6;
 let timeoutComida = null;
 
-window.addEventListener('load', function() {
-    setTimeout(function() {
-        somEfeito.loop = true;
+// Aguarda o primeiro clique na tela para ligar o latido em loop:
+document.addEventListener('click', function(event) {
+    // Só começa a latir se o clique NÃO tiver sido direto no botão de cumprimentar:
+    if (event.target !== botao) {
+        somEfeito.loop = true; // Liga a repetição infinita!
         tocarEfeito('assets/latido.mp3');
-    }, 1000);
-});
+    }
+}, { once: true });
+
+
 
 function tocarEfeito(src) {
     somEfeito.pause();
