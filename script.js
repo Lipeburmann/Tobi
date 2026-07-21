@@ -23,7 +23,7 @@ document.addEventListener('click', function(event) {
         somEfeito.loop = true;
         setTimeout(function() {
             tocarEfeito('assets/latido.m4a');
-        }, 1000);
+        }, 800);
     }
 }, { once: true });
 
