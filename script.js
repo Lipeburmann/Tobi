@@ -67,7 +67,7 @@ botao.addEventListener('click', function() {
 
 // Botão de Acariciar
 botaoAcariciar.addEventListener('click', function() {
-    somEfeito.volume = 2;
+    somEfeito.volume = 2.0;
     if (timeoutComida) {
         clearTimeout(timeoutComida);
         timeoutComida = null;
