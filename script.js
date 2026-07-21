@@ -9,7 +9,7 @@ const somEfeito = document.getElementById('somEfeito');
 const gifCumprimento = 'assets/mao_loop_count.gif';
 const botaoSoneca = document.getElementById('btnSoneca');
 const botaoAcordar = document.getElementById('btnAcordar');
-musicaFundo.volume = 0.35;
+musicaFundo.volume = 0.3;
 somEfeito.volume = 1;
 let timeoutComida = null;
 
@@ -67,7 +67,7 @@ botao.addEventListener('click', function() {
 
 // Botão de Acariciar
 botaoAcariciar.addEventListener('click', function() {
-    somEfeito.volume = 0.9;
+    somEfeito.volume = 2;
     if (timeoutComida) {
         clearTimeout(timeoutComida);
         timeoutComida = null;
@@ -137,7 +137,11 @@ botaoSoneca.addEventListener('click', function() {
     botaoAcordar.style.display = 'inline-block';
 
     // Atraso de 1 segundo para sincronizar com o GIF de dormir:
-    setTimeout(function() { tocarEfeito('assets/ronco.mp3'); }, 1000);
+    setTimeout(function() { 
+    somEfeito.loop = true; // Liga a repetição infinita na hora que der 2 segundos!
+    somEfeito.volume = 0.5;
+    tocarEfeito('assets/ronco.ogg'); 
+}, 2500);
 });
 
 // Botão Acordar
@@ -148,6 +152,9 @@ botaoAcordar.addEventListener('click', function() {
     botaoComida.style.display = 'inline-block';
     botaoBolinha.style.display = 'inline-block';
     botaoSoneca.style.display = 'inline-block';
+    somEfeito.loop = false;  // 1. Desliga o loop do ronco para ele parar de roncar!
+    somEfeito.pause();       // 2. Para o som de ronco na mesma hora
+    somEfeito.currentTime = 0; // 3. Rebobina o áudio
 
     // Volta para o GIF inicial e dá um latido de acordado:
     imagemGif.src = 'assets/acordou.gif';
