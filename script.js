@@ -7,6 +7,7 @@ const titulo = document.getElementById('titulo');
 const musicaFundo = document.getElementById('musicaFundo');
 const somEfeito = document.getElementById('somEfeito');
 const gifCumprimento = 'assets/mao_loop_count.gif';
+const botaoSoneca = document.getElementById('btnSoneca');
 musicaFundo.volume = 0.35;
 somEfeito.volume = 1;
 let timeoutComida = null;
@@ -81,6 +82,7 @@ botaoAcariciar.addEventListener('click', function() {
 
     botaoComida.style.display = 'inline-block';
     botaoBolinha.style.display = 'inline-block';
+    botaoSoneca.style.display = 'inline-block';
 });
 
 // Botão Dar Comida
@@ -112,4 +114,20 @@ botaoBolinha.addEventListener('click', function() {
     imagemGif.src = 'assets/tobi_bolinha.gif';
 
     setTimeout(function() { tocarEfeito('assets/som_bolinha.mp3'); }, 1500);
+});
+
+// Botão Soneca (Dormir)
+botaoSoneca.addEventListener('click', function() {
+    if (timeoutComida) {
+        clearTimeout(timeoutComida);
+        timeoutComida = null;
+    }
+
+    titulo.style.display = 'none';
+    imagemGif.style.maxWidth = '300px';
+    imagemGif.style.height = '300px';
+    imagemGif.src = 'assets/tobi_dormindo.gif';
+
+    // Atraso de 1 segundo para sincronizar com o GIF de dormir:
+    setTimeout(function() { tocarEfeito('assets/som_dormindo.mp3'); }, 1000);
 });
