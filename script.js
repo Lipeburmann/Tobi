@@ -9,7 +9,7 @@ const somEfeito = document.getElementById('somEfeito');
 const gifCumprimento = 'assets/mao_loop_count.gif';
 const botaoSoneca = document.getElementById('btnSoneca');
 const botaoAcordar = document.getElementById('btnAcordar');
-musicaFundo.volume = 0.3;
+musicaFundo.volume = 0.25;
 somEfeito.volume = 1.0;
 let timeoutComida = null;
 
