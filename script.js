@@ -14,6 +14,7 @@ const gifCumprimento = 'assets/mao_loop_count.gif';
 musicaFundo.volume = 0.25;
 somEfeito.volume = 1.0;
 
+//sistema para parar o som usando uma fila
 let timeoutsPendentes = [];
 
 function agendar(fn, delay) {
