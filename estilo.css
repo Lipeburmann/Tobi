@@ -116,30 +116,51 @@ button:active {
 .controle-musica {
     margin-top: 16px;
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 24px;
+    gap: 10px;
+    background-color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.controle-musica-texto {
+    color: #d35400;
+    font-weight: bold;
+    font-size: 0.95rem;
+    white-space: nowrap;
 }
 
 .controle-musica button {
     background: none;
     border: none;
-    box-shadow: none; /* remove a sombra laranja padrão dos outros botões */
-    color: #d35400;   /* combina com a cor do h1 */
-    font-size: 28px;
-    padding: 6px 12px;
+    box-shadow: none; 
+    color: #d35400;   
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 1;
+    padding: 4px 8px;
     border-radius: 50%;
     cursor: pointer;
     transition: transform 0.15s ease;
 }
 
 .controle-musica button:active {
-    background: none; /* sobrescreve o :active genérico (que pinta de verde) */
-    transform: scale(0.9);
+    background: none; 
+    transform: scale(0.85);
 }
 
 @media (hover: hover) and (pointer: fine) {
     .controle-musica button:hover {
         background: none;
         transform: scale(1.2);
+        
+    }
+}
+
+@media (max-width: 400px) {
+    .controle-musica {
+        width: 100%;
     }
 }
