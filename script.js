@@ -11,6 +11,7 @@ const botaoSoneca = document.getElementById('btnSoneca');
 const botaoAcordar = document.getElementById('btnAcordar');
 const btnMusicaAnterior = document.getElementById('btnMusicaAnterior');
 const btnMusicaProxima = document.getElementById('btnMusicaProxima');
+const botaoAlbum = document.getElementById('btnAlbum');
 const gifCumprimento = 'assets/mao_loop_count.gif';
 
 musicaFundo.volume = 0.25;
@@ -97,6 +98,13 @@ btnMusicaProxima.addEventListener('click', function () {
     trocarMusica(1);
 });
 
+// ===================== Botão Álbum de Fotos =====================
+botaoAlbum.addEventListener('click', function () {
+    trocarAcao(); // corta qualquer som/ação pendente, igual as outras ações
+    esconderTitulo();
+    definirImagem('assets/album.gif');
+});
+
 // ===================== PRIMEIRO CLIQUE NA TELA (liga o latido em loop) =====================
 document.addEventListener('click', function (event) {
     if (event.target !== botao) {
@@ -127,7 +135,7 @@ botao.addEventListener('click', function () {
     botao.style.display = 'none';
     botaoAcariciar.style.display = 'inline-block';
 
-    tocarEfeito('assets/gemido.mp3'); 
+    tocarEfeito('assets/gemido.mp3');
 });
 
 // ===================== Botão Acariciar =====================
@@ -142,6 +150,7 @@ botaoAcariciar.addEventListener('click', function () {
     botaoComida.style.display = 'inline-block';
     botaoBolinha.style.display = 'inline-block';
     botaoSoneca.style.display = 'inline-block';
+    botaoAlbum.style.display = 'inline-block';
 });
 
 // ===================== Botão Dar Comida =====================
@@ -174,6 +183,7 @@ botaoSoneca.addEventListener('click', function () {
     botaoComida.style.display = 'none';
     botaoBolinha.style.display = 'none';
     botaoSoneca.style.display = 'none';
+    botaoAlbum.style.display = 'none';
 
     agendar(function () {
         botaoAcordar.style.display = 'inline-block';
@@ -198,5 +208,6 @@ botaoAcordar.addEventListener('click', function () {
         botaoComida.style.display = 'inline-block';
         botaoBolinha.style.display = 'inline-block';
         botaoSoneca.style.display = 'inline-block';
+        botaoAlbum.style.display = 'inline-block';
     }, 2500);
 });
