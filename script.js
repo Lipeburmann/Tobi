@@ -67,7 +67,6 @@ function tocarEfeito(src) {
 }
 
 // ===================== PLAYLIST / TROCA DE MÚSICA DE FUNDO =====================
-// Adicione aqui os arquivos de música que quiser deixar disponíveis.
 const playlist = [
     'assets/fundo.mp3',
     'assets/fundo2.mp3',
